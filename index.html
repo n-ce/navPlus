@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <div id="navFG"></div>
   <input id="navButton" type="checkbox" />
   <label for="navButton">
     <div></div>
@@ -19,12 +20,12 @@
     <div></div>
   </label>
   <nav>
-    <li class="selected">Home</li>
-    <li>Queue</li>
-    <li>Search</li>
-    <li>Related</li>
-    <li>Settings</li>
-    <li>Playlists</li>
+    <a class="selected" href="/">Home</a>
+    <a href="/?=Queue">Queue</a>
+    <a href="/?=Search">Search</a>
+    <a href="/?=Related">Related</a>
+    <a href="/?=Settings">Settings</a>
+    <a href="/?=Playlists">Playlists</a>
   </nav>
   <h1>Responsive Navigation</h1>
   <script type="module" src="/src/main.ts"></script>

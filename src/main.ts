@@ -1,29 +1,32 @@
 const hamBtn = document.querySelector('input');
 const nav = document.querySelector('nav');
-const lists = document.querySelectorAll('li');
+const navFg = document.getElementById('navFG');
+const anchors = document.querySelectorAll('a');
 const h1 = document.querySelector('h1');
 let selected = 0;
 
 
-hamBtn?.addEventListener('input', () => {
+hamBtn?.addEventListener('click', () => {
   nav?.classList.toggle('show');
+  navFg?.classList.toggle('active');
+
 })
 
 
-document.body.addEventListener('click', e => {
+navFg?.addEventListener('click', () => {
   if (
-    nav?.classList.contains('show') &&
-    (e.target as HTMLInputElement).matches('body')
+    nav?.classList.contains('show')
     && hamBtn
   ) hamBtn?.click();
 });
 
 
 
-lists.forEach((list, index) => {
-  list.addEventListener('click', e => {
-    if (!h1) return;
-    lists[selected].classList.remove('selected');
+anchors.forEach((anchor, index) => {
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    if (!h1 || selected === index) return;
+    anchors[selected].classList.remove('selected');
     const element = e.target as HTMLLIElement;
     h1.textContent = element.textContent;
     element.classList.add('selected');

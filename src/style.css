@@ -1,15 +1,21 @@
 :root {
   --bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  --text: #a1adc0;
-  --nav: #c3cfe2aa;
+  --text: hsl(217, 30%, 70%);
+  --nav: hsl(217, 35%, 95%);
+  --linkBg: hsl(217, 50%, 85%);
+  --onLinkBg: hsl(217, 50%, 40%);
+  --hover: hsl(217, 50%, 90%);
+  --roundedness: 4vmin;
 }
 
 @media(prefers-color-scheme:dark) {
   :root {
     --bg: linear-gradient(to right bottom, #434343 0%, black 100%);
     --text: #aaa;
-    --nav: #000;
-    --liBg: #7777;
+    --nav: #222;
+    --linkBg: #555;
+    --onLinkBg: #fff;
+    --hover: #333;
   }
 }
 
@@ -17,7 +23,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100dvh;
+  height: 100%;
 }
 
 body {
@@ -30,60 +36,60 @@ body {
 
 h1 {
   color: var(--text);
-  font-size: 15vw;
+  font-size: 15vmin;
   text-align: center;
   width: 100%;
-  animation: appear 3s ease-in-out;
 }
 
 
 nav {
   height: 100%;
   background-color: var(--nav);
-  backdrop-filter: blur(1dvmax);
-  list-style-type: none;
   display: flex;
   flex-direction: column;
 }
 
-li {
+a {
+  color: inherit;
+  text-decoration: none;
   width: 80%;
   margin: 2% 5%;
-  border-radius: 5dvmin;
+  border-radius: var(--roundedness);
   font-weight: bold;
-  transition: all 0.5s ease-in-out;
-
+  cursor: none;
 }
 
-li.selected {
-  background-color: var(--liBg);
-  color: white;
+a:hover {
+  background-color: var(--hover);
+}
+
+a.selected {
+  background-color: var(--linkBg);
+  color: var(--onLinkBg);
 }
 
 @media(orientation:portrait) {
 
   nav {
-    width: 0%;
+    width: 80%;
+    transform: translateX(-100%);
     position: fixed;
     top: 0;
-    padding-top: 20%;
-    border-radius: 0 5dvmax 5dvmax 0;
+    border-radius: 0 var(--roundedness) var(--roundedness) 0;
     overflow: hidden;
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 
-  li {
-    opacity: 0;
-    /* for animation */
+  a:nth-child(1) {
+    margin-top: 20%;
+  }
+
+  a {
     padding: 5%;
   }
 
   nav.show {
-    width: 80%
-  }
-
-  nav.show li {
-    opacity: 1;
+    transform: translateX(0)
   }
 
 }
@@ -96,13 +102,14 @@ li.selected {
     justify-content: center;
   }
 
-  li {
+  a {
     width: 70%;
     padding: 5% 0 5% 5vw;
   }
 
-  /* for disabling navBtn */
-  label {
+  /* for disabling navBtn & navFG */
+  label,
+  #navFG {
     display: none !important;
   }
 
