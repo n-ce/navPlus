@@ -25,6 +25,7 @@ const erudaInjector: PluginOption = {
 
 export default defineConfig(({ command }) => {
   return {
-    plugins: command === 'serve' ? [erudaInjector] : []
+    plugins: command === 'serve' ? [erudaInjector] : [],
+    base: '/navPlus/' /* for ghPages *
   }
 });
