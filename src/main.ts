@@ -2,7 +2,6 @@ const hamBtn = document.querySelector('input');
 const nav = document.querySelector('nav');
 const navFg = document.getElementById('navFG');
 const anchors = document.querySelectorAll('a');
-const h1 = document.querySelector('h1');
 let selected = 0;
 
 
@@ -20,15 +19,15 @@ navFg?.addEventListener('click', () => {
   ) hamBtn?.click();
 });
 
-
+// Set Initial Location
+if (!location.href.includes('#'))
+  location.href += '#home';
 
 anchors.forEach((anchor, index) => {
   anchor.addEventListener('click', e => {
-    e.preventDefault();
-    if (!h1 || selected === index) return;
+    if (selected === index) return;
     anchors[selected].classList.remove('selected');
-    const element = e.target as HTMLLIElement;
-    h1.textContent = element.textContent;
+    const element = e.target as HTMLAnchorElement;
     element.classList.add('selected');
     hamBtn?.click();
     selected = index;
