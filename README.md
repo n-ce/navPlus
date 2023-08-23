@@ -1,20 +1,25 @@
 # navPlus
 Responsive Navigation Drawer Skeleton with Client-Side Routing for projects.
 
-## TODO
-- Client Side Routing
-
 ## Development
 
-### Clone Repository
+#### Clone Repository
 ```
 gh repo clone n-ce/navPlus
 ```
-### Install Packages
+#### Install Packages
 ```
 npm install
 ```
-### Start Development Server
+#### Start Development Server
 ```
 npm run dev -- --open
+```
+#### Build Project
+```
+npm run build
+```
+#### Preview Build
+```
+npm run preview
 ```
